@@ -1,3 +1,6 @@
+# (c) 2023 Antonio Rivera
+# This code is licensed under GNU General Public license (see LICENSE.txt for details)
+
 import copy
 
 
