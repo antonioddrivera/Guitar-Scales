@@ -78,7 +78,6 @@ def scale_selector(scale, index):
     show_image(current_image)
 
 
-
 def get_notes_in_scale(scale):
     starting_note_index = 0
     for i, note in enumerate(notes_array):
@@ -88,7 +87,6 @@ def get_notes_in_scale(scale):
     cur_note_index = starting_note_index
 
     notes = [notes_array[starting_note_index]]
-
 
     count = 1
     for i, interval in enumerate(scale.intervals):
@@ -159,7 +157,7 @@ def draw_on_fretboard():
     draw = ImageDraw.Draw(image)
 
     font_path = "fonts/Marlboro.ttf"
-    font_size = 20
+    font_size = 23
     font = ImageFont.truetype(font_path, font_size)
 
     first_fret_position = 20
@@ -189,10 +187,14 @@ def draw_on_fretboard():
                         fill='black', outline='black', width=2
                     )
 
-                text_size = draw.textsize(cur_fret.note, font=font)
-                text_position = (circle_center[0] - text_size[0] / 2, circle_center[1] - text_size[1] / 2)
+                if '#' in cur_fret.note:
+                    circle_center = (fret_position - 7, string_position - 9)
+                else:
+                    circle_center = (fret_position - 4, string_position - 9)
 
-                draw.text(text_position, cur_fret.note, fill='white', font=font)
+                text_size = draw.textbbox(circle_center, cur_fret.note, font=font)
+
+                draw.text(text_size, cur_fret.note, fill='white', font=font)
 
     return image
 
@@ -241,7 +243,6 @@ def back_button():
     clear_fretboard()
     current_image_label.pack_forget()
     current_image = None
-
 
 
 def show_screen1():
@@ -302,7 +303,7 @@ def show_minor():
     scale_menu.add_command(label="Minor Scale/Aeolian", command=lambda: scale_selector("Minor Scale/Aeolian", 0))
     scale_menu.add_command(label="Minor Pentatonic", command=lambda: scale_selector("Minor Pentatonic", 1))
     scale_menu.add_command(label="Harmonic Minor", command=lambda: scale_selector("Harmonic Minor", 2))
-    scale_menu.add_command(label="Melodic Minor", command=lambda: scale_selector("Melodic Minor", 3))
+    scale_menu.add_command(label="Ascending Melodic Minor", command=lambda: scale_selector("Melodic Minor", 3))
     scale_menu.add_command(label="Minor Bebop", command=lambda: scale_selector("Minor Bebop", 4))
     scale_menu.add_command(label="Minor Blues", command=lambda: scale_selector("Minor Blues", 5))
     scale_menu.add_command(label="Dorian", command=lambda: scale_selector("Dorian", 6))
@@ -357,7 +358,7 @@ btn_frame.grid_columnconfigure(0, weight=1)
 # Creating an array to house the different keys so that I can use two for loops
 # This is in place of manually inserting all 12 keys
 keys = ['C', "D", "E", "F", "G", "A", "B"]
-key_sharps = ['C#/D♭', 'D#/E♭', "F#/G♭", "G#/A♭", "A#/B♭"]
+key_sharps = ['C#', 'D#', "F#", "G#", "A#"]
 
 # for loop for the top row
 count = 0
@@ -409,4 +410,3 @@ scale_menubut.pack()
 # show Screen 1 that also hides screen 2
 show_screen1()
 root.mainloop()
-
