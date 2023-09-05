@@ -28,7 +28,7 @@ min_scales_name = ['Minor Scale/Aeolian', 'Minor Pentatonic', 'Harmonic Minor', 
 
 major = Scale(m_scales_name[0], [2, 2, 1, 2, 2, 2, 1])
 pent = Scale(m_scales_name[1], [2, 2, 3, 2, 3])
-harm = Scale(m_scales_name[2], [2, 2, 1, 2, 2, 3, 1])
+harm = Scale(m_scales_name[2], [2, 2, 1, 2, 1, 3, 1])
 bebop = Scale(m_scales_name[3], [2, 2, 1, 2, 2, 2, 1, 1])
 blue = Scale(m_scales_name[4], [2, 2, 1, 2, 3, 2])
 mix = Scale(m_scales_name[5], [2, 2, 1, 2, 2, 1, 2])
