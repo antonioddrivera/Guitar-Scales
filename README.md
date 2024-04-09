@@ -17,5 +17,3 @@ Hitting the return button will allow you to change the quality/key if desired.
 
 The extra branch includes the original illustrator file if you want to make your fretboard.
 
-***NOTICE***  
-Windows Defender incorrectly flags this because it was compiled with pyinstaller. The program is safe to run, but feel free to download the source code only instead and run main.py. I have contacted the Windows Defender team to resolve this issue.
